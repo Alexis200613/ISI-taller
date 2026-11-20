@@ -9,10 +9,17 @@ class Question:
         self._body = body
         self._date = datetime.now()
         self._tags = []
-        self._category = category    
+        self._category = category
+        self._responses = []
 
     def mostrar_pregunta(self):
         print(f"Titulo: {self._title}")
         print(f"Body: {self._body}")
         print(f"Category: {self._category.get_category_name()}")
+
+    def add_response(self, response: Response):
+        _responses.append(response)
+
+    
+    
         
