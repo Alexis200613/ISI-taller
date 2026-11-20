@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from .Category import Category
+from .Response import Response
 
 
 class Question:
@@ -18,8 +19,4 @@ class Question:
         print(f"Category: {self._category.get_category_name()}")
 
     def add_response(self, response: Response):
-        _responses.append(response)
-
-    
-    
-        
+        self._responses.append(response)
