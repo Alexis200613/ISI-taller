@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if username %}
+        <div class="container">
+            <h1>Bienvenido, {{ username }}</h1>
+            <p>Inicio de sesión exitoso usando <strong>session</strong>.</p>
+            <br>
+            <a href="{{ url_for('logout') }}"><button type="button">Cerrar sesión</button></a>
+        </div>
+    {% else %}
+        {% if error %}
+            <p style="color: red; text-align: center;"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <h1>Login</h1>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    {% endif %}
+</body>
+</html>
