@@ -3,9 +3,15 @@ import secrets
 from flask import Flask, redirect, render_template, request, session, url_for
 from markupsafe import escape  #escapar para tratar a todos lo usuarios como "peligroso"
 
+from myapp.database import close_db, init_db
+
 app = Flask(__name__)
 
 app.secret_key = secrets.token_hex(16)
+
+init_db()
+app.teardown_appcontext(close_db)
+
 
 def valid_login(username, password):
     USER_DATABASE = {
